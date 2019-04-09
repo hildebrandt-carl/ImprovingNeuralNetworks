@@ -4,7 +4,10 @@ import numpy as np
 from keras.datasets import mnist
 import matplotlib.pyplot as plt
 from keras.models import model_from_json
+from random import randint
 
+
+image_number = randint(1, 10000)
 
 # Set to test mode
 keras.backend.set_learning_phase(0)
@@ -27,29 +30,32 @@ images /= 255.0
 
 # apply attack on source image
 attack = foolbox.attacks.FGSM(fmodel)
-adversarial = attack(images[2], labels[2])
+adversarial = attack(images[image_number], labels[image_number])
+
 # if the attack fails, adversarial will be None and a warning will be printed
+if adversarial == None:
+	print("No adversarial found")
+	exit()
 
-img_plot = images[2].reshape(28,28)
-
+# Plot the images
 plt.figure()
 
 plt.subplot(1, 3, 1)
 plt.title('Original')
+img_plot = images[image_number].reshape(28,28)
 plt.imshow(img_plot)
 plt.axis('off')
 
-adv_plot = adversarial.reshape(28,28)
-
 plt.subplot(1, 3, 2)
 plt.title('Adversarial')
+adv_plot = adversarial.reshape(28,28)
 plt.imshow(adv_plot)  # ::-1 to convert BGR to RGB
 plt.axis('off')
 
 plt.subplot(1, 3, 3)
 plt.title('Difference')
 difference = adv_plot - img_plot
-plt.imshow(difference / abs(difference).max() * 0.2 + 0.5)
+plt.imshow(difference)
 plt.axis('off')
 
 plt.show()
