@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+
+# -------------------------------------------------------------------
+# Generates a dense network and trains it on the Mnist dataset
+# -------------------------------------------------------------------
+
 import keras
 from keras.datasets import mnist
 from keras.models import Sequential

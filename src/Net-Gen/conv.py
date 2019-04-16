@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+
+# -------------------------------------------------------------------
+# Generates a convolutional network and trains it on the Mnist dataset
+# -------------------------------------------------------------------
+
 import keras
 from keras.datasets import mnist
 from keras.models import Sequential
@@ -82,7 +88,7 @@ print('Test accuracy:', score[1])
 model_json = model.to_json()
 with open("Networks/conv.json", "w") as json_file:
   json_file.write(model_json)
-model.save_weights("Networks/conv.h5
+model.save_weights("Networks/conv.h5")
 
 # Save full Model
 model.save('Networks/full_conv.h5')
