@@ -4,23 +4,28 @@
 # Generates a single adverserial image for a network which you specify
 # -------------------------------------------------------------------
 
+import sys
 import foolbox
 import keras
 import numpy as np
 from keras.datasets import mnist
 import matplotlib.pyplot as plt
-from keras.models import model_from_json
+from keras.models import load_model
 from random import randint
+
+# Check that an argument has been passed with the python script
+if len(sys.argv) < 1:
+  print("Please enter a name for the architecture file")
+
+# Networks which will be loaded
+net_name = sys.argv[1]
+num_images = 100
 
 # Set to test mode
 keras.backend.set_learning_phase(0)
 
 # Load the model
-json_file = open('../Net-Gen/Networks/small_dense.json', 'r')
-loaded_model_json = json_file.read()
-json_file.close()
-loaded_model = model_from_json(loaded_model_json)
-loaded_model.load_weights('../Net-Gen/Networks/small_dense.h5')
+loaded_model = load_model("../Net-Gen/FinalNetworks/" + net_name + ".h5")
 
 # Instantiate attack model
 fmodel = foolbox.models.KerasModel(loaded_model, bounds=(0, 1))

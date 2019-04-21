@@ -1,4 +1,5 @@
 #!/bin/zsh
-python3 small_dense.py
-python3 large_dense.py
-python3 conv.py
+
+python3 network_creator.py "small_dense.txt"
+python3 network_creator.py "large_dense.txt"
+python3 network_creator.py "conv.txt"

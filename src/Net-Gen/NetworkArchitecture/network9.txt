@@ -1,0 +1,9 @@
+conv, 8, relu
+conv, 8, relu
+conv, 16, relu
+conv, 16, relu
+maxpooling
+dropout, 0.25
+flattern
+dense, 128, relu
+dropout, 0.5
