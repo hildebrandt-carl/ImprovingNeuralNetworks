@@ -1,7 +1,4 @@
-
-conv, 32, relu
-maxpooling
-dropout, 0.25
 flattern
-dense, 128, relu 
-dropout, 0.5
+dense, 256, relu
+dense, 256, relu
+dense, 256, relu

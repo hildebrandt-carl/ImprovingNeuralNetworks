@@ -5,7 +5,13 @@ flattern
 dense, 128, relu
 dense, 128, relu
 ---------------------------
+Hyper-Parameters
+---------------------------
+Batch Size: 128
+Number Classes: 10
+Epochs: 2
+---------------------------
 Results
 ---------------------------
-Test loss: 0.07023463950828591
-Test accuracy: 0.9784
+Test loss: 0.11054536271840334
+Test accuracy: 0.9678

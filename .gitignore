@@ -1,0 +1,3 @@
+# Ignore the generated data for now
+**/Adv-Gen/Datasets/
+**/Net-Gen/FinalNetworks/

@@ -1,0 +1,19 @@
+flattern
+dropout, 0.2
+dense, 516, relu
+dropout, 0.2
+dense, 516, relu
+dropout, 0.2
+dense, 516, relu
+dropout, 0.2
+dense, 256, relu
+dropout, 0.2
+dense, 256, relu
+dropout, 0.2
+dense, 256, relu
+dropout, 0.2
+dense, 128, relu
+dropout, 0.2
+dense, 128, relu
+dropout, 0.2
+dense, 128, relu

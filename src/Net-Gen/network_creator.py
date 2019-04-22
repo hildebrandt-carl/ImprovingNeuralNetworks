@@ -7,8 +7,9 @@ from keras.layers import Conv2D, MaxPooling2D
 from keras import backend as K
 
 # Check that an argument has been passed with the python script
-if len(sys.argv) < 1:
-  print("Please enter a name for the architecture file")
+if len(sys.argv) <= 1:
+  print("This file requires whether or not to use TMR")
+  exit()
 
 # Training Hyperparameters
 batch_size = 128
@@ -67,8 +68,8 @@ for line in f:
 
   # Add a dense layer
   if line_details[0] == "dense":
-    model.add(Dense(units=int(line_details[1]),
-                    activation=line_details[2]))
+    model.add(Dense( units=int(line_details[1]),
+                     activation=line_details[2]))
 
   # Add a convolutional layer
   elif line_details[0] == "conv":
@@ -84,11 +85,11 @@ for line in f:
 
   # Add a dropout layer
   elif line_details[0] == "dropout":
-    model.add(Dropout(float(line_details[1])))
+    model.add(Dropout( rate=float(line_details[1])))
 
   # Add a maxpooling layer
   elif line_details[0] == "maxpooling":
-    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(MaxPooling2D( pool_size=(2, 2)))
 
   # Add a flattern layer
   elif line_details[0] == "flattern":
@@ -133,6 +134,12 @@ details_saver.write("Model\n")
 details_saver.write("---------------------------\n")
 details_saver.writelines(architecture)
 details_saver.write("\n---------------------------\n")
+details_saver.write("Hyper-Parameters\n")
+details_saver.write("---------------------------\n")
+details_saver.write("Batch Size: " + str(batch_size) + "\n")
+details_saver.write("Number Classes: " + str(num_classes) + "\n")
+details_saver.write("Epochs: " + str(epochs) + "\n")
+details_saver.write("---------------------------\n")
 details_saver.write("Results\n")
 details_saver.write("---------------------------\n")
 details_saver.write("Test loss: " + str(score[0]) + "\n")

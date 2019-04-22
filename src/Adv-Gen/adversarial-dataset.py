@@ -14,11 +14,12 @@ from keras.models import load_model
 from random import randint
 
 # Check that an argument has been passed with the python script
-if len(sys.argv) < 1:
-  print("Please enter a name for the architecture file")
+if len(sys.argv) <= 2:
+  print("Please include network names and save prefix")
+  exit()
 
 # Networks which will be loaded
-net_names = sys.argv[1].split(',')
+net_names = sys.argv[1].split(', ')
 num_images = 100
 
 # Set to test mode
@@ -39,6 +40,7 @@ adversarial_labels = np.zeros(num_images * len(net_names))
 for net_i in range(0,len(net_names)):
 
     print("Working on Network " + net_names[net_i])
+    conversion_details = []
 
     # Create a single dataset
     single_adversarial_dataset = np.zeros((num_images,images.shape[1],images.shape[2]))
@@ -92,23 +94,32 @@ for net_i in range(0,len(net_names)):
         single_adversarial_dataset[img_i] = adversarial
 
         # Go to next image
-        print(str(img_i) + ") Orig Label: " + str(labels[image_number]) + " Adv Label: " + str(adv_label))
+        conversion_details.append(str(img_i) + ") Image Number: " + str(image_number) + " - Orig Label: " + str(labels[image_number]) + " - Adv Label: " + str(adv_label) + "\n")
         img_i += 1
 
     # Save the single dataset into the full dataset
     adversarial_dataset[num_images * net_i:num_images * (net_i + 1)] = single_adversarial_dataset
-    np.save("Datasets/" + net_names[net_i] + "_adversarial.npy", single_adversarial_dataset)
+    np.save("Datasets/IndividualNetworks/" + net_names[net_i] + "_adversarial.npy", single_adversarial_dataset)
 
     # Save the single labels into the large original labels
     original_labels[num_images * net_i:num_images * (net_i + 1)] = single_original_labels
-    np.save("Datasets/" + net_names[net_i] + "_original_labels.npy", single_original_labels)
+    np.save("Datasets/IndividualNetworks/" + net_names[net_i] + "_original_labels.npy", single_original_labels)
 
     # Save the adversarial labels into the large adversarial labels
     adversarial_labels[num_images * net_i:num_images * (net_i + 1)] = single_adversarial_labels
-    np.save("Datasets/" + net_names[net_i] + "_adversarial_labels.npy", single_adversarial_labels)
+    np.save("Datasets/IndividualNetworks/" + net_names[net_i] + "_adversarial_labels.npy", single_adversarial_labels)
+
+    # Save the details of the images which were converted accuracy:
+    details_saver = open("Datasets/IndividualNetworks/results_" + net_names[net_i] + ".txt","w") 
+    details_saver.write("---------------------------\n")
+    details_saver.write("Conversion Details\n")
+    details_saver.write("---------------------------\n")
+    details_saver.writelines(conversion_details)
+    details_saver.write("\n---------------------------")
+    details_saver.close() 
 
 # We are done
-np.save("Datasets/adversarial_dataset.npy", adversarial_dataset)
-np.save("Datasets/original_labels.npy", original_labels)
-np.save("Datasets/adversarial_labels.npy", adversarial_labels)
+np.save("Datasets/" + str(sys.argv[2]) + "_adversarial_dataset.npy", adversarial_dataset)
+np.save("Datasets/" + str(sys.argv[2]) + "_original_labels.npy", original_labels)
+np.save("Datasets/" + str(sys.argv[2]) + "_adversarial_labels.npy", adversarial_labels)
 print("We are done")

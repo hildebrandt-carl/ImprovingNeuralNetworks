@@ -1,0 +1,7 @@
+flattern
+dropout, 0.75
+dense, 1024, relu
+dropout, 0.75
+dense, 1024, relu
+dropout, 0.75
+dense, 1024, relu

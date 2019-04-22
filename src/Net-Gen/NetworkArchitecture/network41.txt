@@ -1,0 +1,4 @@
+flattern
+dense, 64, relu
+dense, 64, relu
+dense, 16, relu

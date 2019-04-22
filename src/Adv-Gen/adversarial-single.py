@@ -14,8 +14,9 @@ from keras.models import load_model
 from random import randint
 
 # Check that an argument has been passed with the python script
-if len(sys.argv) < 1:
-  print("Please enter a name for the architecture file")
+if len(sys.argv) <= 1:
+  print("This file requires whether or not to use TMR")
+  exit()
 
 # Networks which will be loaded
 net_name = sys.argv[1]

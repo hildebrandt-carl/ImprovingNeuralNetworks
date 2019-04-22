@@ -1,0 +1,4 @@
+conv, 8, relu
+flattern
+dense, 32, relu
+dense, 32, relu

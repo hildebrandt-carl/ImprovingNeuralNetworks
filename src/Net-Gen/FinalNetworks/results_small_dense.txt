@@ -3,7 +3,13 @@ Model
 ---------------------------
 flattern
 ---------------------------
+Hyper-Parameters
+---------------------------
+Batch Size: 128
+Number Classes: 10
+Epochs: 2
+---------------------------
 Results
 ---------------------------
-Test loss: 0.2676752486169338
-Test accuracy: 0.9251
+Test loss: 0.3113122192144394
+Test accuracy: 0.9147

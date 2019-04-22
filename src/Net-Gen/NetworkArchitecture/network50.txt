@@ -1,0 +1,5 @@
+flattern
+dense, 128, relu
+dropout, 0.25
+dense, 512, relu
+dense, 32, relu

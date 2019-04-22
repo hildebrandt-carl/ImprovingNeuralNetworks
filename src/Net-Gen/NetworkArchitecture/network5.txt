@@ -1,3 +1,2 @@
 flattern
-dense, 128, relu
-dropout, 0.5
+dense, 256, relu

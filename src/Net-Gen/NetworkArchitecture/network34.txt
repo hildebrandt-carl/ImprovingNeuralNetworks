@@ -1,0 +1,7 @@
+flattern
+dense, 1024, relu
+dense, 512, relu
+dense, 512, relu
+dense, 512, relu
+dense, 512, relu
+dense, 128, relu
