@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-python3 Adversarial-Compare.py 0
+python3 Adversarial-Compare.py "nmr"
