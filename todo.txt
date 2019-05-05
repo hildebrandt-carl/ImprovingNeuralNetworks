@@ -1,0 +1,5 @@
+We could analyze the adversarial dataset generation to see which attacks are better on which networks. This could be interesting as like a "Case study" on what attack types are important vs what attack types are not.
+
+I need to run everything on Big machine
+
+We could also generate a measure of how easily adversarail images are generated for the network. Ie run the adversarial tool on the both the final networks

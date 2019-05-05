@@ -8,7 +8,7 @@ from keras import backend as K
 
 # Check that an argument has been passed with the python script
 if len(sys.argv) <= 1:
-  print("This file requires whether or not to use TMR")
+  print("This file requires the network names")
   exit()
 
 # Training Hyperparameters
