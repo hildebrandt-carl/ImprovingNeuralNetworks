@@ -1,0 +1,27 @@
+--------------------------------------------------
+-----------Individual Networks Start--------------
+--------------------------------------------------
+Testing Network 1
+Total Images: 37
+Correctly Identified: 15
+Accuracy: 0.40540540540540543
+--------------------------------------------------
+Testing Network 2
+Total Images: 37
+Correctly Identified: 18
+Accuracy: 0.4864864864864865
+--------------------------------------------------
+
+--------------------------------------------------
+-----N-Version Programming Networks Start---------
+--------------------------------------------------
+Testing N-Version programming with N=1
+Total Images: 37
+Correctly Identified: 15
+Accuracy: 0.40540540540540543
+--------------------------------------------------
+Testing N-Version programming with N=2
+Total Images: 37
+Correctly Identified: 33
+Accuracy: 0.8918918918918919
+--------------------------------------------------

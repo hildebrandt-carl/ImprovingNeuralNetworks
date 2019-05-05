@@ -1,0 +1,20 @@
+---------------------------
+Model
+---------------------------
+conv, 16, relu
+conv, 16, relu
+maxpooling
+flattern
+dense, 256, relu
+dense, 32, relu
+---------------------------
+Hyper-Parameters
+---------------------------
+Batch Size: 128
+Number Classes: 10
+Epochs: 12
+---------------------------
+Results
+---------------------------
+Test loss: 0.042937576445771036
+Test accuracy: 0.9897

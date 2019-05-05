@@ -1,4 +1,4 @@
-# Ignore the generated data for now
-**/Adv-Gen/Datasets/
-**/Net-Gen/FinalNetworks/
-**/Net-Use/Results/
+# # Ignore the generated data for now
+# **/Adv-Gen/Datasets/
+# **/Net-Gen/FinalNetworks/
+# **/Net-Use/Results/

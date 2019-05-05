@@ -1,0 +1,21 @@
+--------------------------------------------------
+-----------Individual Networks Start--------------
+--------------------------------------------------
+Testing NoTeacher
+Total Adversarial Images: 942
+Correctly Identified Adversarial Images: 736
+Adversary Accuracy: 0.7813163481953291
+
+Total Mnist Images: 10000
+Correctly Identified Adversarial Images: 9738
+Adversary Accuracy: 0.9738
+--------------------------------------------------
+Testing Teacher
+Total Adversarial Images: 942
+Correctly Identified Adversarial Images: 698
+Adversary Accuracy: 0.7409766454352441
+
+Total Mnist Images: 10000
+Correctly Identified Adversarial Images: 9552
+Adversary Accuracy: 0.9552
+--------------------------------------------------
