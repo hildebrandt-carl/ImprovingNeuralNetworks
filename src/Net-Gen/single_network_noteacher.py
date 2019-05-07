@@ -82,7 +82,7 @@ print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 
 # Save the testing accuracy:
-details_saver = open("TeacherNetworks/WithoutTeacher.txt","w") 
+details_saver = open("TeacherNetworks/NoTeacher.txt","w") 
 details_saver.write("---------------------------\n")
 details_saver.write("Model\n")
 details_saver.write("---------------------------\n")
@@ -98,7 +98,7 @@ details_saver.write("Results\n")
 details_saver.write("---------------------------\n")
 details_saver.write("Test loss: " + str(score[0]) + "\n")
 details_saver.write("Test accuracy: " + str(score[1]) + "\n")
-details_saver.close() 
+details_saver.close()
 
 # Save full Model
 model.save("TeacherNetworks/NoTeacher.h5")

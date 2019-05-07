@@ -2,4 +2,10 @@ We could analyze the adversarial dataset generation to see which attacks are bet
 
 I need to run everything on Big machine
 
-We could also generate a measure of how easily adversarail images are generated for the network. Ie run the adversarial tool on the both the final networks
+We could also generate a measure of how easily adversarail images are generated for the network. Ie run the adversarial tool on the both the final networks.
+
+Analysis of the training data
+
+Add dotted lines around the workflow image indicating what is what.
+
+Removed SLSQPAttack due to it being TRASH

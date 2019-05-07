@@ -1,3 +1,0 @@
-flattern
-dense, 128, relu
-dense, 128, relu

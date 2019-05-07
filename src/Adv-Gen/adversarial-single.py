@@ -21,7 +21,6 @@ if len(sys.argv) <= 2:
 # Networks which will be loaded
 net_name = sys.argv[1]
 attack_name = sys.argv[2]
-num_images = 100
 
 # Set to test mode
 keras.backend.set_learning_phase(0)
@@ -39,13 +38,14 @@ images = images.astype('float32')
 images /= 255.0
 
 # Generate a random image number
-image_number = randint(0, images.shape[0])
+#image_number = randint(0, images.shape[0])
+image_number = 0
 
 # apply attack on source image
 attack = None
 if attack_name == "GradientAttack":
   attack = foolbox.attacks.GradientAttack(fmodel)
-if attack_name == "GradientSignAttack":
+elif attack_name == "GradientSignAttack":
   attack = foolbox.attacks.FGSM(fmodel)
 elif attack_name == "DeepFool":
   attack = foolbox.attacks.DeepFoolAttack(fmodel)
@@ -66,6 +66,7 @@ elif attack_name == "LBFGS":
 else:
   print("Attack not known")
 
+print(images.shape)
 # Get the adversarial attack
 adversarial = attack(images[image_number], labels[image_number])
 
@@ -91,7 +92,7 @@ plt.imshow(img_plot, cmap='gray', vmin=0, vmax=1)
 plt.axis('off')
 
 plt.subplot(1, 3, 3)
-plt.title('Ariginal - Class:' + str(adv_label))
+plt.title('Adversarial - Class:' + str(adv_label))
 adv_plot = adversarial.reshape(28,28)
 plt.imshow(adv_plot, cmap='gray', vmin=0, vmax=1)
 plt.axis('off')
@@ -99,7 +100,7 @@ plt.axis('off')
 plt.subplot(1, 3, 2)
 plt.title('Difference')
 difference = adv_plot - img_plot
-plt.imshow(difference, cmap='gray', vmin=0, vmax=1)
+plt.imshow(difference, cmap='gray', vmin=-1, vmax=1)
 plt.axis('off')
 
 plt.show()

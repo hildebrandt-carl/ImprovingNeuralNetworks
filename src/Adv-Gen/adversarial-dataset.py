@@ -22,7 +22,7 @@ if len(sys.argv) <= 2:
 net_names = sys.argv[1].split(', ')
 
 # This defines the number of times the networs are attacked by each of the attack methods
-num_images = 50
+num_images = 5
 
 # Set to test mode
 keras.backend.set_learning_phase(0)
@@ -59,7 +59,7 @@ for net_i in range(0,len(net_names)):
     img_index_used = set()
 
     # For each of the images
-    img_i = 0 
+    img_i = 0
     while img_i < num_images:
 
         print(str(net_names[net_i]) + " - All attacks ran on " + str(img_i+1) + " images")
@@ -85,7 +85,7 @@ for net_i in range(0,len(net_names)):
         attacks.append(foolbox.attacks.CarliniWagnerL2Attack(fmodel))
         attacks.append(foolbox.attacks.NewtonFoolAttack(fmodel))
         attacks.append(foolbox.attacks.RandomStartProjectedGradientDescentAttack(fmodel))
-        attacks.append(foolbox.attacks.SLSQPAttack(fmodel))
+        #attacks.append(foolbox.attacks.SLSQPAttack(fmodel))
         attacks.append(foolbox.attacks.LBFGSAttack(fmodel))
         attack_names = ["GradientAttack",
                         "FGSM",
@@ -95,9 +95,8 @@ for net_i in range(0,len(net_names)):
                         "CarliniWagnerL2Attack",
                         "NewtonFoolAttack",
                         "RandomStartProjectedGradientDescentAttack",
-                        "SLSQPAttack",
                         "LBFGSAttack"]
-        
+
         # Apply attacks to image
         attack_number = -1
         for attack in attacks:
@@ -146,13 +145,13 @@ for net_i in range(0,len(net_names)):
     np.save("Datasets/IndividualNetworks/" + net_names[net_i] + "_adversarial_labels.npy", single_adversarial_labels)
 
     # Save the details of the images which were converted accuracy:
-    details_saver = open("Datasets/IndividualNetworks/results_" + net_names[net_i] + ".txt","w") 
+    details_saver = open("Datasets/IndividualNetworks/results_" + net_names[net_i] + ".txt","w")
     details_saver.write("---------------------------\n")
     details_saver.write("Conversion Details\n")
     details_saver.write("---------------------------\n")
     details_saver.writelines(conversion_details)
     details_saver.write("\n---------------------------")
-    details_saver.close() 
+    details_saver.close()
 
 # Stack each of the lists vertically
 adversarial_dataset = np.vstack(adversarial_dataset)
