@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # -------------------------------------------------------------------
-# Compares how well each of the networks do on advarserial images
+# This generate teacher labels which can be used to train a student network
 # -------------------------------------------------------------------
 
 import sys
@@ -44,7 +44,7 @@ for net_i in range(0,len(net_names)):
 # Get the total number of networks
 N = len(loaded_model)
 
-# get source image and label
+# get test image and labels
 (images, labels), _  = mnist.load_data()
 images = images.reshape(images.shape[0],images.shape[1],images.shape[2],1)
 images = images.astype('float32')
@@ -53,10 +53,15 @@ images /= 255.0
 # Create the array to save the teacher logits
 teacher_labels = []
 
+details_saver = open("Results/teacher-labels.txt","w")
+
 print(" ")
 print("--------------------------------------------------")
 print("-----N-Version Programming Networks Start---------")
 print("--------------------------------------------------")
+details_saver.write("--------------------------------------------------\n")
+details_saver.write("-----N-Version Programming Networks Start---------\n")
+details_saver.write("--------------------------------------------------\n")
 
 # For each of the images
 correct = 0
@@ -79,11 +84,17 @@ for img_i in range(0,len(labels)):
     if (labels[img_i] == model_label):
         correct += 1
 
+    print("Completed image: " + str(img_i) + "/" + str(len(labels)))
+
 # Print out information about the training
 print("Total Images: " + str(len(labels)))
 print("Correctly Identified: " + str(correct))
 print("Accuracy: " + str(float(correct) / len(labels)))
 print("--------------------------------------------------")
+details_saver.write("Total Images: " + str(len(labels)) + "\n")
+details_saver.write("Correctly Identified: " + str(correct) + "\n")
+details_saver.write("Accuracy: " + str(float(correct) / len(labels)) + "\n")
+details_saver.write("--------------------------------------------------\n")
 
 # Reshape the labels to the correct dimensions
 teacher_labels = np.concatenate(teacher_labels)
@@ -91,4 +102,10 @@ teacher_labels = np.concatenate(teacher_labels)
 # Save the teacher labels
 print("Saving teacher labels")
 print("Teacher labels are of shape: " + str(np.shape(teacher_labels)))
+details_saver.write("Saving teacher labels\n")
+details_saver.write("Teacher labels are of shape: " + str(np.shape(teacher_labels)) + "\n")
+
 np.save("Results/teacher_labels.npy", teacher_labels)
+
+# Close the file writer
+details_saver.close()

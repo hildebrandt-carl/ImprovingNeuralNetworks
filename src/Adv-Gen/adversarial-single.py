@@ -66,7 +66,6 @@ elif attack_name == "LBFGS":
 else:
   print("Attack not known")
 
-print(images.shape)
 # Get the adversarial attack
 adversarial = attack(images[image_number], labels[image_number])
 

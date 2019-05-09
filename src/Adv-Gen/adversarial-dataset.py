@@ -14,15 +14,15 @@ from keras.models import load_model
 from random import randint
 
 # Check that an argument has been passed with the python script
-if len(sys.argv) <= 2:
-  print("Please include network names and save prefix")
+if len(sys.argv) <= 1:
+  print("Please include network names")
   exit()
 
 # Networks which will be loaded
 net_names = sys.argv[1].split(', ')
 
 # This defines the number of times the networs are attacked by each of the attack methods
-num_images = 5
+num_images = 13
 
 # Set to test mode
 keras.backend.set_learning_phase(0)
@@ -32,11 +32,6 @@ _, (images, labels) = mnist.load_data()
 images = images.reshape(images.shape[0],images.shape[1],images.shape[2],1)
 images = images.astype('float32')
 images /= 255.0
-
-# Create datasets
-adversarial_dataset = []
-original_labels = []
-adversarial_labels = []
 
 # For each of the networks
 for net_i in range(0,len(net_names)):
@@ -132,16 +127,13 @@ for net_i in range(0,len(net_names)):
         # Go to next image
         img_i += 1
 
-    # Save the single dataset into the full dataset
-    adversarial_dataset.append(single_adversarial_dataset)
+    # Save the single dataset
     np.save("Datasets/IndividualNetworks/" + net_names[net_i] + "_adversarial.npy", single_adversarial_dataset)
 
-    # Save the single labels into the large original labels
-    original_labels.append(single_original_labels)
+    # Save the single labels
     np.save("Datasets/IndividualNetworks/" + net_names[net_i] + "_original_labels.npy", single_original_labels)
 
-    # Save the adversarial labels into the large adversarial labels
-    adversarial_labels.append(single_adversarial_labels)
+    # Save the adversarial labels
     np.save("Datasets/IndividualNetworks/" + net_names[net_i] + "_adversarial_labels.npy", single_adversarial_labels)
 
     # Save the details of the images which were converted accuracy:
@@ -153,19 +145,4 @@ for net_i in range(0,len(net_names)):
     details_saver.write("\n---------------------------")
     details_saver.close()
 
-# Stack each of the lists vertically
-adversarial_dataset = np.vstack(adversarial_dataset)
-original_labels = np.hstack(original_labels)
-adversarial_labels = np.hstack(adversarial_labels)
-
-# Print the shapes to make sure nothing went wrong
-print("Dataset shapes are:")
-print("Adversarial Dataset: " + str(adversarial_dataset.shape))
-print("Original Labels Dataset: " + str(original_labels.shape))
-print("Adversarial Labels Dataset: " + str(adversarial_labels.shape))
-
-# We are done
-np.save("Datasets/" + str(sys.argv[2]) + "_adversarial_dataset.npy", adversarial_dataset)
-np.save("Datasets/" + str(sys.argv[2]) + "_original_labels.npy", original_labels)
-np.save("Datasets/" + str(sys.argv[2]) + "_adversarial_labels.npy", adversarial_labels)
 print("We are done")

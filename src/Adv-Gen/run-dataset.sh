@@ -14,4 +14,4 @@ do
 
 done
 
-python3 adversarial-compare.py "$NetworkNames"
+python3 adversarial-dataset.py "$NetworkNames"

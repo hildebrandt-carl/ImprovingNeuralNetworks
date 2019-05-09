@@ -12,8 +12,8 @@ from keras.models import load_model
 from random import randint
 
 # Check that an argument has been passed with the python script
-if len(sys.argv) <= 2:
-  print("This file requires a dataset prefix")
+if len(sys.argv) <= 1:
+  print("This file requires the network names")
   exit()
 
 # Network names we will be testing
@@ -41,12 +41,12 @@ for net_i in range(0,len(net_names)):
     loaded_model.append(l_model)
 
 # Get the dataset
-images = np.load("../Adv-Gen/Datasets/" + str(sys.argv[2]) + "_adversarial_dataset.npy")
+images = np.load("../Adv-Gen/Datasets/adversarial_dataset.npy")
 images /= 255.0
-original_labels = np.load("../Adv-Gen/Datasets/" + str(sys.argv[2]) + "_original_labels.npy")
+original_labels = np.load("../Adv-Gen/Datasets/original_labels.npy")
 
 # Save the testing accuracy:
-details_saver = open("Results/compare_results_" + str(sys.argv[2]) + ".txt","w") 
+details_saver = open("Results/compare_results.txt","w")
 
 # Just to remove our program from the keras lines
 print(" ")
@@ -85,7 +85,6 @@ for net_i in range(0, len(loaded_model)):
     details_saver.write("Accuracy: " + str(float(correct) / len(original_labels)) + "\n")
     details_saver.write("--------------------------------------------------\n")
 
-
 print(" ")
 print("--------------------------------------------------")
 print("-----N-Version Programming Networks Start---------")
@@ -98,7 +97,7 @@ details_saver.write("--------------------------------------------------\n")
 for N in range(1,len(loaded_model) + 1):
 
     correct = 0
-    # Testing a N-Version programming network 
+    # Testing a N-Version programming network
     print("Testing N-Version programming with N=" + str(N))
     details_saver.write("Testing N-Version programming with N=" + str(N) + "\n")
 
@@ -130,4 +129,4 @@ for N in range(1,len(loaded_model) + 1):
     details_saver.write("--------------------------------------------------\n")
 
 # Close the file writer
-details_saver.close() 
+details_saver.close()

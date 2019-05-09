@@ -1,4 +1,4 @@
-# # Ignore the generated data for now
+# Ignore the generated data
 **/Adv-Gen/Datasets/
 **/Net-Gen/FinalNetworks/
 **/Net-Gen/TeacherNetworks/

@@ -12,7 +12,7 @@ $ pip3 install matplotlib
 
 ## Running
 
-There are two files in this directory, the viewer and the dataset generation tool. To view adversarial examples you can run the following:
+There are three files in this directory, the adversarial viewer, the dataset generation tool and the dataset combination tool. To view adversarial examples you can run the following:
 
 ```
 $ python3 adversarial-dataset.py "<NetworkName>" "<AttackType>"
@@ -37,25 +37,33 @@ An example of running the above command is:
 $ python3 adversarial-dataset.py "network1" "ADef"
 ```
 
-The final file is the adversarial dataset generation file. This fill will go all networks passed to it. For each network it will attempt to generate 12 images for each of the 10 attacks. For each network it will save an adversarial example dataset inside the `./Datasets/IndividualNetowks/` folder. It will also generate a complete adversarial dataset which contains the adversarial images for all networks in the `./Datasets/` folder.
+The final file is the adversarial dataset generation file. This fill will go all networks passed to it. For each network it will attempt to generate 13 images for each of the 10 attacks. For each network it will save an adversarial example dataset inside the `./Datasets/IndividualNetowks/` folder.
 
 You can run the dataset generation python file using:
 
 ```
-$ python3 adversarial-dataset.py "<NetworkNames>" "<SavePrefix>"
+$ python3 adversarial-dataset.py "<NetworkNames>"
 ```
 
-Where network names are a comma-space seperated list. It will search for each of the networks in the `../Net-Gen/FinalNetworks/` folder. Save prefix is a prefix appended to the output file name. An example of running the file is shown below:
+Where network names are a comma-space separated list. It will search for each of the networks in the `../Net-Gen/FinalNetworks/` folder. An example of running the file is shown below:
 
 ```
-$ python3 adversarial-dataset.py "Network1, Network2, Network3" "run1"
+$ python3 adversarial-dataset.py "Network1, Network2, Network3"
 ```
 
 You can also run the provided scripts to automatically run on multiple networks. To use it run:
 
 ```
-$ ./run.sh
+$ ./run-dataset.sh
 ```
+
+Once you are done you can run the dataset combination tool. This takes all the individual networks and combines them into a single dataset. The final dataset will be saved in `./Datasets/`. To run the combination tool you can run the following command:
+
+```
+$ python3 adversarial-combine.py "<NetworkNames>"
+```
+
+It will look for the networks in the `./Datasets/IndividualNetowks/` folder.
 
 ## Note
 

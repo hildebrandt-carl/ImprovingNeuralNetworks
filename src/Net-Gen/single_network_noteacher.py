@@ -45,12 +45,12 @@ y_test = keras.utils.to_categorical(y_test, num_classes)
 
 # Create the model
 model = Sequential()
-# model.add(Conv2D(32, kernel_size=(3, 3),
-#                  activation='relu',
-#                  input_shape=input_shape))
-# model.add(Conv2D(64, (3, 3), activation='relu'))
-# model.add(MaxPooling2D(pool_size=(2, 2)))
-# model.add(Dropout(0.25))
+model.add(Conv2D(32, kernel_size=(3, 3),
+                 activation='relu',
+                 input_shape=input_shape))
+model.add(Conv2D(64, (3, 3), activation='relu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Dropout(0.25))
 model.add(Flatten())
 model.add(Dense(128, activation='relu'))
 model.add(Dropout(0.5))
@@ -58,6 +58,10 @@ model.add(Dense(num_classes, activation='softmax'))
 
 # Write the architecture for saving later
 architecture = []
+architecture.append("Conv2D: 32\n")
+architecture.append("Conv2D: 64\n")
+architecture.append("MaxPooling2D\n")
+architecture.append("Dropout: 0.25\n")
 architecture.append("Flatten\n")
 architecture.append("Dense: 128\n")
 architecture.append("Dropout: 0.5\n")
@@ -82,7 +86,7 @@ print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 
 # Save the testing accuracy:
-details_saver = open("TeacherNetworks/NoTeacher.txt","w") 
+details_saver = open("TeacherNetworks/NoTeacher.txt","w")
 details_saver.write("---------------------------\n")
 details_saver.write("Model\n")
 details_saver.write("---------------------------\n")
