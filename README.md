@@ -52,7 +52,10 @@ $ pip3 install https://github.com/bethgelab/foolbox/archive/master.zip
 
 * [Source](./src/) - This contains all the source code I used for training networks. Creating datasets. Creating N-version setup. Distilling the networks, and finally testing the networks.
 * [Documents](./docs) - This contains the project proposal, the progress reports, the presentation and the report. 
-* [Videos](./vids) - ToBeDone
+
+## Video
+
+A video of the project working can be found on youtube: [https://youtu.be/u_tLKoU_lro](https://youtu.be/u_tLKoU_lro)
 
 ## Acknowledgments
 
