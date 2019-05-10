@@ -38,8 +38,7 @@ images = images.astype('float32')
 images /= 255.0
 
 # Generate a random image number
-#image_number = randint(0, images.shape[0])
-image_number = 0
+image_number = randint(0, images.shape[0])
 
 # apply attack on source image
 attack = None
