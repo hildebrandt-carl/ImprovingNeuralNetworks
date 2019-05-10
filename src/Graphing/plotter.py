@@ -106,3 +106,20 @@ plt.show()
 # Y - System
 
 
+# Comparing the Accuracy and Robustness
+
+plt.boxplot(network_acc)
+plt.axhline(y=0.9668)
+plt.ylabel('Accuracy (%)')
+plt.title('100 Network Test Accuracy vs Student Test Accuracy')
+plt.show()
+# put a line for the teacher network
+
+plt.boxplot(network_ad_acc)
+plt.axhline(y=0.9535)
+plt.ylabel('Accuracy (%)')
+plt.title('100 Network Adversarial Accuracy vs Student Adversarial Accuracy')
+plt.show()
+# put a line for the teacher network
+
+
