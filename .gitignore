@@ -1,5 +1,21 @@
-# Ignore the generated data
-**/Adv-Gen/Datasets/
-**/Net-Gen/FinalNetworks/
-**/Net-Gen/TeacherNetworks/
-**/Net-Use/Results/
+# Ignore any results data
+
+# Networks
+*.h5
+
+# Teacher training results
+NoTeacher.txt
+Teacher.txt
+
+# Dataset diles
+*.npy
+
+# Result text files
+results*.txt
+compare_results.txt
+network-accuracy.txt
+network-advarsarial*.txt
+teacher-labels.txt
+
+# misc
+*.zip

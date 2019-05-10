@@ -1,0 +1,1 @@
+This folder holds the adversarial data for any individual network.
