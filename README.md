@@ -10,10 +10,6 @@ We will also be using [Bethgelab's foolbox](https://github.com/bethgelab/foolbox
 sudo apt-get install build-essential autoconf libtool pkg-config python-opengl python-imaging python-pyrex python-pyside.qtopengl idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl libgle3 python-dev python3-tk python3-dev
 ```
 
-TODO:
-Confirmed
-python3-tk
-
 We will be using [pip](https://pypi.org/project/pip/), pythons package manager, to install the python packages we need. To install [pip](https://pypi.org/project/pip/) you can run:
 
 ```
@@ -51,7 +47,7 @@ $ pip3 install https://github.com/bethgelab/foolbox/archive/master.zip
 ## Project Sections
 
 * [Source](./src/) - This contains all the source code I used for training networks. Creating datasets. Creating N-version setup. Distilling the networks, and finally testing the networks.
-* [Documents](./docs) - This contains the project proposal, the progress reports, the presentation and the report. 
+* [Documents](./docs) - This contains the project proposal, the progress reports, the presentation and the report.
 
 ## Video
 
